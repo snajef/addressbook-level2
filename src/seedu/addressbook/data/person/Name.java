@@ -59,5 +59,26 @@ public class Name {
     public int hashCode() {
         return fullName.hashCode();
     }
-
+    
+    /**
+     * Returns true if the other name is very similar to this name.
+     * Two names are considered similar if they differ only by upper/lowercase, or
+     * if they are the same name but in different format 
+     * e.g. LASTNAME_FIRSTNAME vs FIRSTNAME_LASTNAME
+     */
+     public boolean isSimilar(Name other) {
+    	 List<String> myName = Arrays.asList(fullName.toLowerCase().split(" "));
+    	 List<String> otherName = Arrays.asList(other.fullName.toLowerCase().split(" "));
+    	 
+    	 List<String> biggerName = (myName.size() >= otherName.size()) ? myName : otherName;
+    	 List<String> smallerName = (biggerName == myName) ? otherName : myName;
+    	 
+    	 for (String namePart : smallerName) {
+    		 if (!(biggerName.contains(namePart))) {
+    			 return false;
+    		 }
+    	 }
+    	 
+    	 return true;
+     }
 }
