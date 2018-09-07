@@ -53,9 +53,15 @@ public class SortCommand extends Command {
     public static final Pattern KEYWORDS_ARGS_FORMAT = Pattern.compile(KEYWORDS_ARGS_FORMAT_BUILDER.toString());
     
     private final String keyExtractorName;
+    private final String key;
     
     public SortCommand(String key) {
+    	this.key = key;
     	keyExtractorName = getKeyExtractorName(key);
+    }
+    
+    public String getKey() {
+    	return key;
     }
     
     public String getKeyExtractorName(String key) {
