@@ -169,9 +169,10 @@ public class ParserTest {
     
     @Test
     public void parse_sortCommandOneArg_parsedCorrectly() {
-    	final String input = "sort index";
-    	final String resultMessage = "";
-    	assertTrue(true); // Sort has not been implemented yet.
+    	final String testArg = "name";
+    	final String input = "sort " + testArg;
+    	final SortCommand result = parseAndAssertCommandType(input, SortCommand.class);
+    	assertEquals(result.getKey(), testArg);
     }
     
     @Test
